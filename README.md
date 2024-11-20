@@ -6,28 +6,40 @@ PC
 Anaconda - Python 3.7
 ## ALGORITHM: 
 ### Step 1:
-Load the CSV into a DataFrame.
+Import the necessary library to handle file uploads.
 ### Step 2: 
-Print the number of contents to be displayed using df.head().
+Create a function called copy_file that takes two parameters: source and destination.
 ### Step 3: 
-The number of rows returned is defined in Pandas option settings.
+Inside the function, open the source file in read mode and read its contents.
 ### Step 4:  
-Check your system's maximum column with the pd.options.display.max_column statement.
+Open the destination file in write mode and write the contents read from the source file into it.
 ### Step 5: 
-Increase the maximum number of rows to display the entire DataFrame
+Print a success message indicating that the contents have been copied.
 ### Step 6: 
-End the program.
+Handle any errors that may occur, such as file not found or other exceptions.
 ## PROGRAM:
 ```
-def copy(fname,newfile):
-    with open(fname) as fp:
-        with open(newfile,'w') as fp1:
-            data=fp.read()
-            fp1.write(data)
-copy("textfile1.txt","textfile2.txt")
+def copy_file(source, destination):
+    try:
+        with open(source, 'r') as src_file:
+            content = src_file.read()
+        with open(destination, 'w') as dest_file:
+            dest_file.write(content)
+        print(f"Contents copied from {source} to {destination}.")
+    except FileNotFoundError:
+        print(f"Error: The file {source} does not exist.")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+source_file = 'source.txt'  
+destination_file = 'destination.txt'
+
+copy_file(source_file, destination_file)
+
 ```
 ### OUTPUT:
-![image](https://github.com/user-attachments/assets/1ef47b23-81ba-4b6b-894f-0553bcb30a80)
+![image](https://github.com/user-attachments/assets/6b0e6499-5e30-49e2-85f9-6e7cb0c8ecb1)
+
 
 
 
